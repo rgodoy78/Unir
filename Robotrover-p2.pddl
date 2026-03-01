@@ -1,5 +1,5 @@
 (define (problem Robotrover-p02)
-  (:domain rover-minerales)
+  (:domain Robotrover-Minerales)
 
   ;; ============================
   ;; OBJETOS

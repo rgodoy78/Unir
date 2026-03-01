@@ -36,8 +36,8 @@
 
   (:goal
     (and
-      (not (at-mineral rock1 loc1))
-      (not (at-mineral rock2 loc2))
+      (at-lab rock1 loc5)
+      (at-lab rock2 loc5)
     )
   )
 )

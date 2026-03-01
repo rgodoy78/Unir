@@ -1,43 +1,64 @@
-(define (problem Robotrover-p1)
-  (:domain Robotrover)
+(define (problem Robotrover-p01)
+  (:domain Robotrover-Minerales)
+
+  ;; ============================
+  ;; OBJETOS
+  ;; ============================
 
   (:objects
     rover1
     loc1 loc2 loc3 loc4 loc5
-    rock1 rock2
+    roca1 roca2
   )
+
+  ;; ============================
+  ;; ESTADO INICIAL
+  ;; ============================
 
   (:init
-    (at rover1 loc3)
 
-    (at-mineral rock1 loc1)
-    (at-mineral rock2 loc2)
+    ;; Posicion inicial del rover
+    (esta-en rover1 loc3)
 
-    (lab loc5)
+    ;; Minerales excavados previamente
+    (mineral-en roca1 loc1)
+    (mineral-en roca2 loc2)
 
-    ;; 3 <-> 1
-    (connected loc3 loc1)
-    (connected loc1 loc3)
+    ;; Laboratorio ubicado en loc5
+    (es-laboratorio loc5)
 
-    ;; 3 -> 2
-    (connected loc3 loc2)
+    ;; ============================
+    ;; RESTRICCIONES DE CAMINO
+    ;; ============================
 
-    ;; 2 -> 4
-    (connected loc2 loc4)
+    ;; 3 <-> 1 (bidireccional)
+    (conectado loc3 loc1)
+    (conectado loc1 loc3)
 
-    ;; 3 <-> 4
-    (connected loc3 loc4)
-    (connected loc4 loc3)
+    ;; 3 -> 2 (una sola direccion)
+    (conectado loc3 loc2)
 
-    ;; 4 <-> 5
-    (connected loc4 loc5)
-    (connected loc5 loc4)
+    ;; 2 -> 4 (una sola direccion)
+    (conectado loc2 loc4)
+
+    ;; 3 <-> 4 (bidireccional)
+    (conectado loc3 loc4)
+    (conectado loc4 loc3)
+
+    ;; 4 <-> 5 (bidireccional)
+    (conectado loc4 loc5)
+    (conectado loc5 loc4)
   )
 
+  ;; ============================
+  ;; OBJETIVO
+  ;; ============================
+
+  ;; Ambos minerales deben estar entregados en el laboratorio
   (:goal
     (and
-      (at-lab rock1 loc5)
-      (at-lab rock2 loc5)
+      (mineral-en-lab roca1 loc5)
+      (mineral-en-lab roca2 loc5)
     )
   )
 )

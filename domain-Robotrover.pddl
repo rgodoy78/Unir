@@ -8,6 +8,7 @@
     (at-mineral ?m ?l)
     (carrying ?r ?m)
     (lab ?l)
+    (at-lab ?m ?l)
   )
 
   (:action move
@@ -43,6 +44,7 @@
     )
     :effect (and
         (not (carrying ?r ?m))
+        (at-lab ?m ?l)
     )
   )
 
